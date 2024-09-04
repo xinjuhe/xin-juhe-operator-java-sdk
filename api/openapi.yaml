@@ -1,0 +1,380 @@
+openapi: 3.0.1
+info:
+  contact:
+    email: henryxm@163.com
+    name: 运营商业务API接口
+    url: https://juhe.xin
+  description: 运营商业务API接口平台应用程序接口文档
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  termsOfService: https://juhe.xin
+  title: 运营商业务API接口
+  version: 1.0.0
+servers:
+- url: https://api.juhe.xin/
+tags:
+- description: 用户余额
+  name: balance
+- description: 客户端授权登录认证获取Token接口
+  name: oauth
+- description: 运营商业务接口平台
+  name: operator
+paths:
+  /oauth2/token:
+    post:
+      description: 获取Token
+      operationId: getToken
+      parameters:
+      - description: client_id
+        in: query
+        name: client_id
+        required: true
+        schema:
+          type: string
+      - description: client_secret
+        in: query
+        name: client_secret
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                type: string
+          description: OK
+        "201":
+          content: {}
+          description: Created
+        "401":
+          content: {}
+          description: Unauthorized
+        "403":
+          content: {}
+          description: Forbidden
+        "404":
+          content: {}
+          description: Not Found
+      summary: 获取Token
+      tags:
+      - oauth
+      x-accepts: '*/*'
+  /oauth2/userInfo:
+    get:
+      description: 获取用户信息
+      operationId: getUserInfo
+      responses:
+        "200":
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/HttpEntity'
+          description: OK
+        "401":
+          content: {}
+          description: Unauthorized
+        "403":
+          content: {}
+          description: Forbidden
+        "404":
+          content: {}
+          description: Not Found
+      security:
+      - Authorization:
+        - global
+      summary: 获取用户信息
+      tags:
+      - oauth
+      x-accepts: application/json;charset=UTF-8
+    post:
+      description: 获取用户信息
+      operationId: getUserInfo_1
+      responses:
+        "200":
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/HttpEntity'
+          description: OK
+        "201":
+          content: {}
+          description: Created
+        "401":
+          content: {}
+          description: Unauthorized
+        "403":
+          content: {}
+          description: Forbidden
+        "404":
+          content: {}
+          description: Not Found
+      security:
+      - Authorization:
+        - global
+      summary: 获取用户信息
+      tags:
+      - oauth
+      x-accepts: application/json;charset=UTF-8
+  /sw/api/v1/code/request:
+    post:
+      description: 请求下发验证码接口
+      operationId: request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CodeRequest'
+        description: request
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/OutResponseOfCodeResponse'
+          description: OK
+        "201":
+          content: {}
+          description: Created
+        "401":
+          content: {}
+          description: Unauthorized
+        "403":
+          content: {}
+          description: Forbidden
+        "404":
+          content: {}
+          description: Not Found
+      security:
+      - Authorization:
+        - global
+      summary: 请求下发验证码接口
+      tags:
+      - operator
+      x-codegen-request-body-name: request
+      x-contentType: application/json
+      x-accepts: '*/*'
+  /sw/api/v1/code/verify:
+    post:
+      description: 请求校验验证码接口
+      operationId: verify
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CodeVerify'
+        description: verify
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/OutResponseOfCodeResponse'
+          description: OK
+        "201":
+          content: {}
+          description: Created
+        "401":
+          content: {}
+          description: Unauthorized
+        "403":
+          content: {}
+          description: Forbidden
+        "404":
+          content: {}
+          description: Not Found
+      security:
+      - Authorization:
+        - global
+      summary: 请求校验验证码接口
+      tags:
+      - operator
+      x-codegen-request-body-name: verify
+      x-contentType: application/json
+      x-accepts: '*/*'
+  /user/api/v1/balance:
+    post:
+      description: 获取用户余额
+      operationId: getBalance
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/OutResponseOfBalance'
+          description: OK
+        "201":
+          content: {}
+          description: Created
+        "401":
+          content: {}
+          description: Unauthorized
+        "403":
+          content: {}
+          description: Forbidden
+        "404":
+          content: {}
+          description: Not Found
+      security:
+      - Authorization:
+        - global
+      summary: 获取用户余额
+      tags:
+      - balance
+      x-accepts: '*/*'
+components:
+  schemas:
+    Balance:
+      example:
+        reward: 1.4658129805029452
+        total: 5.962133916683182
+        balance: 6.027456183070403
+        voucher: 5.637376656633329
+        userUuid: userUuid
+      properties:
+        balance:
+          type: number
+        reward:
+          type: number
+        total:
+          type: number
+        userUuid:
+          type: string
+        voucher:
+          type: number
+      title: Balance
+      type: object
+    CodeRequest:
+      example:
+        appPackage: appPackage
+        product: product
+        param: param
+        appName: appName
+        ip: ip
+        channel: channel
+        mobile: mobile
+        ua: ua
+      properties:
+        appName:
+          type: string
+        appPackage:
+          type: string
+        channel:
+          type: string
+        ip:
+          type: string
+        mobile:
+          type: string
+        param:
+          type: string
+        product:
+          type: string
+        ua:
+          type: string
+      required:
+      - channel
+      - mobile
+      - product
+      title: CodeRequest
+      type: object
+    CodeResponse:
+      example:
+        result: result
+        orderId: orderId
+        message: message
+      properties:
+        message:
+          description: 返回消息
+          type: string
+        orderId:
+          description: 返回订单
+          type: string
+        result:
+          description: 返回结果
+          type: string
+      required:
+      - orderId
+      title: CodeResponse
+      type: object
+    CodeVerify:
+      example:
+        code: code
+        orderId: orderId
+      properties:
+        code:
+          type: string
+        orderId:
+          type: string
+      required:
+      - code
+      - orderId
+      title: CodeVerify
+      type: object
+    HttpEntity:
+      example:
+        body: '{}'
+      properties:
+        body:
+          properties: {}
+          type: object
+      title: HttpEntity
+      type: object
+    OutResponseOfBalance:
+      example:
+        msg: msg
+        code: 0
+        data:
+          reward: 1.4658129805029452
+          total: 5.962133916683182
+          balance: 6.027456183070403
+          voucher: 5.637376656633329
+          userUuid: userUuid
+      properties:
+        code:
+          description: 响应代码
+          format: int32
+          type: integer
+        data:
+          $ref: '#/components/schemas/Balance'
+        msg:
+          description: 错误信息:成功时为空或为success
+          type: string
+      required:
+      - code
+      title: OutResponseOfBalance
+      type: object
+    OutResponseOfCodeResponse:
+      example:
+        msg: msg
+        code: 0
+        data:
+          result: result
+          orderId: orderId
+          message: message
+      properties:
+        code:
+          description: 响应代码
+          format: int32
+          type: integer
+        data:
+          $ref: '#/components/schemas/CodeResponse'
+        msg:
+          description: 错误信息:成功时为空或为success
+          type: string
+      required:
+      - code
+      title: OutResponseOfCodeResponse
+      type: object
+  securitySchemes:
+    Authorization:
+      flows:
+        clientCredentials:
+          scopes:
+            all: All scope is trusted!
+          tokenUrl: /oauth2/token
+      type: oauth2
+x-original-swagger-version: "2.0"
+
