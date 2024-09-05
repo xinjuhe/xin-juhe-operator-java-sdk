@@ -46,25 +46,17 @@ import java.util.Set;
 import xin.juhe.operator.JSON;
 
 /**
- * CodeRequest
+ * CallbackData
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-05T11:11:18.748484+08:00[Asia/Shanghai]", comments = "Generator version: 7.8.0")
-public class CodeRequest {
-  public static final String SERIALIZED_NAME_APP_NAME = "appName";
-  @SerializedName(SERIALIZED_NAME_APP_NAME)
-  private String appName;
-
-  public static final String SERIALIZED_NAME_APP_PACKAGE = "appPackage";
-  @SerializedName(SERIALIZED_NAME_APP_PACKAGE)
-  private String appPackage;
-
+public class CallbackData {
   public static final String SERIALIZED_NAME_CHANNEL = "channel";
   @SerializedName(SERIALIZED_NAME_CHANNEL)
   private String channel;
 
-  public static final String SERIALIZED_NAME_IP = "ip";
-  @SerializedName(SERIALIZED_NAME_IP)
-  private String ip;
+  public static final String SERIALIZED_NAME_ERROR = "error";
+  @SerializedName(SERIALIZED_NAME_ERROR)
+  private String error;
 
   public static final String SERIALIZED_NAME_MOBILE = "mobile";
   @SerializedName(SERIALIZED_NAME_MOBILE)
@@ -74,56 +66,66 @@ public class CodeRequest {
   @SerializedName(SERIALIZED_NAME_PARAM)
   private String param;
 
-  public static final String SERIALIZED_NAME_PRODUCT = "product";
-  @SerializedName(SERIALIZED_NAME_PRODUCT)
-  private String product;
-
-  public static final String SERIALIZED_NAME_UA = "ua";
-  @SerializedName(SERIALIZED_NAME_UA)
-  private String ua;
-
-  public CodeRequest() {
-  }
-
-  public CodeRequest appName(String appName) {
-    this.appName = appName;
-    return this;
-  }
-
   /**
-   * Get appName
-   * @return appName
+   * Gets or Sets status
    */
-  @javax.annotation.Nullable
-  public String getAppName() {
-    return appName;
+  @JsonAdapter(StatusEnum.Adapter.class)
+  public enum StatusEnum {
+    FAIL("fail"),
+    
+    SUCCESS("success");
+
+    private String value;
+
+    StatusEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static StatusEnum fromValue(String value) {
+      for (StatusEnum b : StatusEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<StatusEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final StatusEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public StatusEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return StatusEnum.fromValue(value);
+      }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      String value = jsonElement.getAsString();
+      StatusEnum.fromValue(value);
+    }
   }
 
-  public void setAppName(String appName) {
-    this.appName = appName;
+  public static final String SERIALIZED_NAME_STATUS = "status";
+  @SerializedName(SERIALIZED_NAME_STATUS)
+  private StatusEnum status;
+
+  public CallbackData() {
   }
 
-
-  public CodeRequest appPackage(String appPackage) {
-    this.appPackage = appPackage;
-    return this;
-  }
-
-  /**
-   * Get appPackage
-   * @return appPackage
-   */
-  @javax.annotation.Nullable
-  public String getAppPackage() {
-    return appPackage;
-  }
-
-  public void setAppPackage(String appPackage) {
-    this.appPackage = appPackage;
-  }
-
-
-  public CodeRequest channel(String channel) {
+  public CallbackData channel(String channel) {
     this.channel = channel;
     return this;
   }
@@ -142,26 +144,26 @@ public class CodeRequest {
   }
 
 
-  public CodeRequest ip(String ip) {
-    this.ip = ip;
+  public CallbackData error(String error) {
+    this.error = error;
     return this;
   }
 
   /**
-   * Get ip
-   * @return ip
+   * 当回调状态显示失败时显示
+   * @return error
    */
   @javax.annotation.Nullable
-  public String getIp() {
-    return ip;
+  public String getError() {
+    return error;
   }
 
-  public void setIp(String ip) {
-    this.ip = ip;
+  public void setError(String error) {
+    this.error = error;
   }
 
 
-  public CodeRequest mobile(String mobile) {
+  public CallbackData mobile(String mobile) {
     this.mobile = mobile;
     return this;
   }
@@ -180,7 +182,7 @@ public class CodeRequest {
   }
 
 
-  public CodeRequest param(String param) {
+  public CallbackData param(String param) {
     this.param = param;
     return this;
   }
@@ -189,7 +191,7 @@ public class CodeRequest {
    * Get param
    * @return param
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public String getParam() {
     return param;
   }
@@ -199,41 +201,22 @@ public class CodeRequest {
   }
 
 
-  public CodeRequest product(String product) {
-    this.product = product;
+  public CallbackData status(StatusEnum status) {
+    this.status = status;
     return this;
   }
 
   /**
-   * Get product
-   * @return product
+   * Get status
+   * @return status
    */
   @javax.annotation.Nonnull
-  public String getProduct() {
-    return product;
+  public StatusEnum getStatus() {
+    return status;
   }
 
-  public void setProduct(String product) {
-    this.product = product;
-  }
-
-
-  public CodeRequest ua(String ua) {
-    this.ua = ua;
-    return this;
-  }
-
-  /**
-   * Get ua
-   * @return ua
-   */
-  @javax.annotation.Nullable
-  public String getUa() {
-    return ua;
-  }
-
-  public void setUa(String ua) {
-    this.ua = ua;
+  public void setStatus(StatusEnum status) {
+    this.status = status;
   }
 
 
@@ -246,34 +229,28 @@ public class CodeRequest {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    CodeRequest codeRequest = (CodeRequest) o;
-    return Objects.equals(this.appName, codeRequest.appName) &&
-        Objects.equals(this.appPackage, codeRequest.appPackage) &&
-        Objects.equals(this.channel, codeRequest.channel) &&
-        Objects.equals(this.ip, codeRequest.ip) &&
-        Objects.equals(this.mobile, codeRequest.mobile) &&
-        Objects.equals(this.param, codeRequest.param) &&
-        Objects.equals(this.product, codeRequest.product) &&
-        Objects.equals(this.ua, codeRequest.ua);
+    CallbackData callbackData = (CallbackData) o;
+    return Objects.equals(this.channel, callbackData.channel) &&
+        Objects.equals(this.error, callbackData.error) &&
+        Objects.equals(this.mobile, callbackData.mobile) &&
+        Objects.equals(this.param, callbackData.param) &&
+        Objects.equals(this.status, callbackData.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(appName, appPackage, channel, ip, mobile, param, product, ua);
+    return Objects.hash(channel, error, mobile, param, status);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class CodeRequest {\n");
-    sb.append("    appName: ").append(toIndentedString(appName)).append("\n");
-    sb.append("    appPackage: ").append(toIndentedString(appPackage)).append("\n");
+    sb.append("class CallbackData {\n");
     sb.append("    channel: ").append(toIndentedString(channel)).append("\n");
-    sb.append("    ip: ").append(toIndentedString(ip)).append("\n");
+    sb.append("    error: ").append(toIndentedString(error)).append("\n");
     sb.append("    mobile: ").append(toIndentedString(mobile)).append("\n");
     sb.append("    param: ").append(toIndentedString(param)).append("\n");
-    sb.append("    product: ").append(toIndentedString(product)).append("\n");
-    sb.append("    ua: ").append(toIndentedString(ua)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -296,96 +273,87 @@ public class CodeRequest {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("appName");
-    openapiFields.add("appPackage");
     openapiFields.add("channel");
-    openapiFields.add("ip");
+    openapiFields.add("error");
     openapiFields.add("mobile");
     openapiFields.add("param");
-    openapiFields.add("product");
-    openapiFields.add("ua");
+    openapiFields.add("status");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("channel");
     openapiRequiredFields.add("mobile");
-    openapiRequiredFields.add("product");
+    openapiRequiredFields.add("param");
+    openapiRequiredFields.add("status");
   }
 
   /**
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to CodeRequest
+   * @throws IOException if the JSON Element is invalid with respect to CallbackData
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!CodeRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CodeRequest is not found in the empty JSON string", CodeRequest.openapiRequiredFields.toString()));
+        if (!CallbackData.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in CallbackData is not found in the empty JSON string", CallbackData.openapiRequiredFields.toString()));
         }
       }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!CodeRequest.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CodeRequest` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!CallbackData.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CallbackData` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : CodeRequest.openapiRequiredFields) {
+      for (String requiredField : CallbackData.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("appName") != null && !jsonObj.get("appName").isJsonNull()) && !jsonObj.get("appName").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `appName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("appName").toString()));
-      }
-      if ((jsonObj.get("appPackage") != null && !jsonObj.get("appPackage").isJsonNull()) && !jsonObj.get("appPackage").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `appPackage` to be a primitive type in the JSON string but got `%s`", jsonObj.get("appPackage").toString()));
-      }
       if (!jsonObj.get("channel").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `channel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("channel").toString()));
       }
-      if ((jsonObj.get("ip") != null && !jsonObj.get("ip").isJsonNull()) && !jsonObj.get("ip").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `ip` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ip").toString()));
+      if ((jsonObj.get("error") != null && !jsonObj.get("error").isJsonNull()) && !jsonObj.get("error").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `error` to be a primitive type in the JSON string but got `%s`", jsonObj.get("error").toString()));
       }
       if (!jsonObj.get("mobile").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `mobile` to be a primitive type in the JSON string but got `%s`", jsonObj.get("mobile").toString()));
       }
-      if ((jsonObj.get("param") != null && !jsonObj.get("param").isJsonNull()) && !jsonObj.get("param").isJsonPrimitive()) {
+      if (!jsonObj.get("param").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `param` to be a primitive type in the JSON string but got `%s`", jsonObj.get("param").toString()));
       }
-      if (!jsonObj.get("product").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `product` to be a primitive type in the JSON string but got `%s`", jsonObj.get("product").toString()));
+      if (!jsonObj.get("status").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
       }
-      if ((jsonObj.get("ua") != null && !jsonObj.get("ua").isJsonNull()) && !jsonObj.get("ua").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `ua` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ua").toString()));
-      }
+      // validate the required field `status`
+      StatusEnum.validateJsonElement(jsonObj.get("status"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!CodeRequest.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'CodeRequest' and its subtypes
+       if (!CallbackData.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'CallbackData' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<CodeRequest> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(CodeRequest.class));
+       final TypeAdapter<CallbackData> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(CallbackData.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<CodeRequest>() {
+       return (TypeAdapter<T>) new TypeAdapter<CallbackData>() {
            @Override
-           public void write(JsonWriter out, CodeRequest value) throws IOException {
+           public void write(JsonWriter out, CallbackData value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public CodeRequest read(JsonReader in) throws IOException {
+           public CallbackData read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -396,18 +364,18 @@ public class CodeRequest {
   }
 
   /**
-   * Create an instance of CodeRequest given an JSON string
+   * Create an instance of CallbackData given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of CodeRequest
-   * @throws IOException if the JSON string is invalid with respect to CodeRequest
+   * @return An instance of CallbackData
+   * @throws IOException if the JSON string is invalid with respect to CallbackData
    */
-  public static CodeRequest fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, CodeRequest.class);
+  public static CallbackData fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, CallbackData.class);
   }
 
   /**
-   * Convert an instance of CodeRequest to an JSON string
+   * Convert an instance of CallbackData to an JSON string
    *
    * @return JSON string
    */

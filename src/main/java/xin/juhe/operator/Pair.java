@@ -13,7 +13,7 @@
 
 package xin.juhe.operator;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-04T19:48:05.711681+08:00[Asia/Shanghai]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-05T11:11:18.748484+08:00[Asia/Shanghai]", comments = "Generator version: 7.8.0")
 public class Pair {
     private String name = "";
     private String value = "";
@@ -49,10 +49,6 @@ public class Pair {
 
     private boolean isValidString(String arg) {
         if (arg == null) {
-            return false;
-        }
-
-        if (arg.trim().isEmpty()) {
             return false;
         }
 

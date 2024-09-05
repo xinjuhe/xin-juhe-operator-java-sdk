@@ -14,11 +14,13 @@
 package xin.juhe.operator.auth;
 
 import xin.juhe.operator.Pair;
+import xin.juhe.operator.ApiException;
 
+import java.net.URI;
 import java.util.Map;
 import java.util.List;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-04T19:48:05.711681+08:00[Asia/Shanghai]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-05T11:11:18.748484+08:00[Asia/Shanghai]", comments = "Generator version: 7.8.0")
 public class OAuth implements Authentication {
   private String accessToken;
 
@@ -31,7 +33,8 @@ public class OAuth implements Authentication {
   }
 
   @Override
-  public void applyToParams(List<Pair> queryParams, Map<String, String> headerParams, Map<String, String> cookieParams) {
+  public void applyToParams(List<Pair> queryParams, Map<String, String> headerParams, Map<String, String> cookieParams,
+                            String payload, String method, URI uri) throws ApiException {
     if (accessToken != null) {
       headerParams.put("Authorization", "Bearer " + accessToken);
     }

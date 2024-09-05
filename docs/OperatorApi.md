@@ -2,13 +2,85 @@
 
 All URIs are relative to *https://api.juhe.xin*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**request**](OperatorApi.md#request) | **POST** /sw/api/v1/code/request | 请求下发验证码接口
-[**verify**](OperatorApi.md#verify) | **POST** /sw/api/v1/code/verify | 请求校验验证码接口
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**demoback**](OperatorApi.md#demoback) | **POST** /sw/api/v1/code/demoback | 回到函数示例 |
+| [**request**](OperatorApi.md#request) | **POST** /sw/api/v1/code/request | 请求下发验证码接口 |
+| [**verify**](OperatorApi.md#verify) | **POST** /sw/api/v1/code/verify | 请求校验验证码接口 |
 
 
-<a name="request"></a>
+<a id="demoback"></a>
+# **demoback**
+> String demoback(data)
+
+回到函数示例
+
+用户调用测试，业务系统无需调用
+
+### Example
+```java
+// Import classes:
+import xin.juhe.operator.ApiClient;
+import xin.juhe.operator.ApiException;
+import xin.juhe.operator.Configuration;
+import xin.juhe.operator.auth.*;
+import xin.juhe.operator.models.*;
+import xin.juhe.operator.api.OperatorApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.juhe.xin");
+    
+    // Configure OAuth2 access token for authorization: Authorization
+    OAuth Authorization = (OAuth) defaultClient.getAuthentication("Authorization");
+    Authorization.setAccessToken("YOUR ACCESS TOKEN");
+
+    OperatorApi apiInstance = new OperatorApi(defaultClient);
+    CallbackData data = new CallbackData(); // CallbackData | data
+    try {
+      String result = apiInstance.demoback(data);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling OperatorApi#demoback");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **data** | [**CallbackData**](CallbackData.md)| data | |
+
+### Return type
+
+**String**
+
+### Authorization
+
+[Authorization](../README.md#Authorization)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: */*
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **201** | Created |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+
+<a id="request"></a>
 # **request**
 > OutResponseOfCodeResponse request(request)
 
@@ -53,9 +125,9 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **request** | [**CodeRequest**](CodeRequest.md)| request |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **request** | [**CodeRequest**](CodeRequest.md)| request | |
 
 ### Return type
 
@@ -73,13 +145,13 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | OK |  -  |
-**201** | Created |  -  |
-**401** | Unauthorized |  -  |
-**403** | Forbidden |  -  |
-**404** | Not Found |  -  |
+| **200** | OK |  -  |
+| **201** | Created |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
 
-<a name="verify"></a>
+<a id="verify"></a>
 # **verify**
 > OutResponseOfCodeResponse verify(verify)
 
@@ -124,9 +196,9 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **verify** | [**CodeVerify**](CodeVerify.md)| verify |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **verify** | [**CodeVerify**](CodeVerify.md)| verify | |
 
 ### Return type
 
@@ -144,9 +216,9 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | OK |  -  |
-**201** | Created |  -  |
-**401** | Unauthorized |  -  |
-**403** | Forbidden |  -  |
-**404** | Not Found |  -  |
+| **200** | OK |  -  |
+| **201** | Created |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
 

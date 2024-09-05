@@ -2,7 +2,8 @@
 
 运营商业务API接口
 - API version: 1.0.0
-  - Build date: 2024-09-04T19:48:05.711681+08:00[Asia/Shanghai]
+  - Build date: 2024-09-05T11:11:18.748484+08:00[Asia/Shanghai]
+  - Generator version: 7.8.0
 
 运营商业务API接口平台应用程序接口文档
 
@@ -14,8 +15,8 @@
 ## Requirements
 
 Building the API client library requires:
-1. Java 1.7+
-2. Maven/Gradle
+1. Java 1.8+
+2. Maven (3.8.3+)/Gradle (7.2+)
 
 ## Installation
 
@@ -51,7 +52,14 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "xin.juhe.operator:xinjuhe-operator-java-sdk:1.0.0"
+  repositories {
+    mavenCentral()     // Needed if the 'xinjuhe-operator-java-sdk' jar has been published to maven central.
+    mavenLocal()       // Needed if the 'xinjuhe-operator-java-sdk' jar has been published to the local maven repo.
+  }
+
+  dependencies {
+     implementation "xin.juhe.operator:xinjuhe-operator-java-sdk:1.0.0"
+  }
 ```
 
 ### Others
@@ -116,6 +124,7 @@ Class | Method | HTTP request | Description
 *OauthApi* | [**getToken**](docs/OauthApi.md#getToken) | **POST** /oauth2/token | 获取Token
 *OauthApi* | [**getUserInfo**](docs/OauthApi.md#getUserInfo) | **GET** /oauth2/userInfo | 获取用户信息
 *OauthApi* | [**getUserInfo1**](docs/OauthApi.md#getUserInfo1) | **POST** /oauth2/userInfo | 获取用户信息
+*OperatorApi* | [**demoback**](docs/OperatorApi.md#demoback) | **POST** /sw/api/v1/code/demoback | 回到函数示例
 *OperatorApi* | [**request**](docs/OperatorApi.md#request) | **POST** /sw/api/v1/code/request | 请求下发验证码接口
 *OperatorApi* | [**verify**](docs/OperatorApi.md#verify) | **POST** /sw/api/v1/code/verify | 请求校验验证码接口
 
@@ -123,6 +132,7 @@ Class | Method | HTTP request | Description
 ## Documentation for Models
 
  - [Balance](docs/Balance.md)
+ - [CallbackData](docs/CallbackData.md)
  - [CodeRequest](docs/CodeRequest.md)
  - [CodeResponse](docs/CodeResponse.md)
  - [CodeVerify](docs/CodeVerify.md)
@@ -131,9 +141,12 @@ Class | Method | HTTP request | Description
  - [OutResponseOfCodeResponse](docs/OutResponseOfCodeResponse.md)
 
 
+<a id="documentation-for-authorization"></a>
 ## Documentation for Authorization
 
+
 Authentication schemes defined for the API:
+<a id="Authorization"></a>
 ### Authorization
 
 - **Type**: OAuth

@@ -19,63 +19,62 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
- * Model tests for Balance
+ * Model tests for CallbackData
  */
-public class BalanceTest {
-    private final Balance model = new Balance();
+public class CallbackDataTest {
+    private final CallbackData model = new CallbackData();
 
     /**
-     * Model tests for Balance
+     * Model tests for CallbackData
      */
     @Test
-    public void testBalance() {
-        // TODO: test Balance
+    public void testCallbackData() {
+        // TODO: test CallbackData
     }
 
     /**
-     * Test the property 'balance'
+     * Test the property 'channel'
      */
     @Test
-    public void balanceTest() {
-        // TODO: test balance
+    public void channelTest() {
+        // TODO: test channel
     }
 
     /**
-     * Test the property 'reward'
+     * Test the property 'error'
      */
     @Test
-    public void rewardTest() {
-        // TODO: test reward
+    public void errorTest() {
+        // TODO: test error
     }
 
     /**
-     * Test the property 'total'
+     * Test the property 'mobile'
      */
     @Test
-    public void totalTest() {
-        // TODO: test total
+    public void mobileTest() {
+        // TODO: test mobile
     }
 
     /**
-     * Test the property 'userUuid'
+     * Test the property 'param'
      */
     @Test
-    public void userUuidTest() {
-        // TODO: test userUuid
+    public void paramTest() {
+        // TODO: test param
     }
 
     /**
-     * Test the property 'voucher'
+     * Test the property 'status'
      */
     @Test
-    public void voucherTest() {
-        // TODO: test voucher
+    public void statusTest() {
+        // TODO: test status
     }
 
 }

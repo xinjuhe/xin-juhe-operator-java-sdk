@@ -13,6 +13,13 @@
 
 package xin.juhe.operator.auth;
 
+/**
+ * OAuth flows that are supported by this client
+ */
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-05T11:11:18.748484+08:00[Asia/Shanghai]", comments = "Generator version: 7.8.0")
 public enum OAuthFlow {
-    accessCode, implicit, password, application
+    ACCESS_CODE, //called authorizationCode  in OpenAPI 3.0
+    IMPLICIT,
+    PASSWORD,
+    APPLICATION //called clientCredentials in OpenAPI 3.0
 }

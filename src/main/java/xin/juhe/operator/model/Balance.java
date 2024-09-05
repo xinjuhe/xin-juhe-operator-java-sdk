@@ -14,21 +14,42 @@
 package xin.juhe.operator.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.Arrays;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import xin.juhe.operator.JSON;
 
 /**
  * Balance
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-04T19:48:05.711681+08:00[Asia/Shanghai]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-05T11:11:18.748484+08:00[Asia/Shanghai]", comments = "Generator version: 7.8.0")
 public class Balance {
   public static final String SERIALIZED_NAME_BALANCE = "balance";
   @SerializedName(SERIALIZED_NAME_BALANCE)
@@ -50,24 +71,22 @@ public class Balance {
   @SerializedName(SERIALIZED_NAME_VOUCHER)
   private BigDecimal voucher;
 
+  public Balance() {
+  }
 
   public Balance balance(BigDecimal balance) {
-    
     this.balance = balance;
     return this;
   }
 
-   /**
+  /**
    * Get balance
    * @return balance
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
   public BigDecimal getBalance() {
     return balance;
   }
-
 
   public void setBalance(BigDecimal balance) {
     this.balance = balance;
@@ -75,22 +94,18 @@ public class Balance {
 
 
   public Balance reward(BigDecimal reward) {
-    
     this.reward = reward;
     return this;
   }
 
-   /**
+  /**
    * Get reward
    * @return reward
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
   public BigDecimal getReward() {
     return reward;
   }
-
 
   public void setReward(BigDecimal reward) {
     this.reward = reward;
@@ -98,22 +113,18 @@ public class Balance {
 
 
   public Balance total(BigDecimal total) {
-    
     this.total = total;
     return this;
   }
 
-   /**
+  /**
    * Get total
    * @return total
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
   public BigDecimal getTotal() {
     return total;
   }
-
 
   public void setTotal(BigDecimal total) {
     this.total = total;
@@ -121,22 +132,18 @@ public class Balance {
 
 
   public Balance userUuid(String userUuid) {
-    
     this.userUuid = userUuid;
     return this;
   }
 
-   /**
+  /**
    * Get userUuid
    * @return userUuid
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
   public String getUserUuid() {
     return userUuid;
   }
-
 
   public void setUserUuid(String userUuid) {
     this.userUuid = userUuid;
@@ -144,26 +151,23 @@ public class Balance {
 
 
   public Balance voucher(BigDecimal voucher) {
-    
     this.voucher = voucher;
     return this;
   }
 
-   /**
+  /**
    * Get voucher
    * @return voucher
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
   public BigDecimal getVoucher() {
     return voucher;
   }
 
-
   public void setVoucher(BigDecimal voucher) {
     this.voucher = voucher;
   }
+
 
 
   @Override
@@ -186,7 +190,6 @@ public class Balance {
   public int hashCode() {
     return Objects.hash(balance, reward, total, userUuid, voucher);
   }
-
 
   @Override
   public String toString() {
@@ -212,5 +215,96 @@ public class Balance {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("balance");
+    openapiFields.add("reward");
+    openapiFields.add("total");
+    openapiFields.add("userUuid");
+    openapiFields.add("voucher");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to Balance
+   */
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!Balance.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in Balance is not found in the empty JSON string", Balance.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Map.Entry<String, JsonElement> entry : entries) {
+        if (!Balance.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Balance` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        }
+      }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if ((jsonObj.get("userUuid") != null && !jsonObj.get("userUuid").isJsonNull()) && !jsonObj.get("userUuid").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `userUuid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("userUuid").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!Balance.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'Balance' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<Balance> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(Balance.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<Balance>() {
+           @Override
+           public void write(JsonWriter out, Balance value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public Balance read(JsonReader in) throws IOException {
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+  /**
+   * Create an instance of Balance given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of Balance
+   * @throws IOException if the JSON string is invalid with respect to Balance
+   */
+  public static Balance fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, Balance.class);
+  }
+
+  /**
+   * Convert an instance of Balance to an JSON string
+   *
+   * @return JSON string
+   */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

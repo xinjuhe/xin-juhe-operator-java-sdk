@@ -43,22 +43,20 @@ public class Demo {
                 System.out.println("请求下发验证码成功，订单号:" + result.getData().getOrderId());
                 //如果未获取到返回的订单号信息，业务可能已失败，无需验证请求
                 String orderId = result.getData().getOrderId();
-                if (null != orderId) {
-                    CodeVerify verify = new CodeVerify();
-                    //填写用户收到的验证码
-                    verify.setCode("123456");
-                    //填写从验证码请求接口中返回的订单号
-                    verify.setOrderId(orderId);
-                    //当用户收到验证码后，调用验证接口进行验证，验证成功后，将扣除费用，并回调到业务系统中
-                    OutResponseOfCodeResponse verifyResponse = apiInstance.verify(verify);
-                    if (null != verifyResponse) {
-                        if (null != verifyResponse.getData()) {
-                            System.out.println("验证码验证成功，订单号:" + verifyResponse.getData().getOrderId());
-                        } else
-                            System.out.println(result.getMsg());
-                    } else {
-                        System.out.println("请求错误");
-                    }
+                CodeVerify verify = new CodeVerify();
+                //填写用户收到的验证码
+                verify.setCode("123456");
+                //填写从验证码请求接口中返回的订单号
+                verify.setOrderId(orderId);
+                //当用户收到验证码后，调用验证接口进行验证，验证成功后，将扣除费用，并回调到业务系统中
+                OutResponseOfCodeResponse verifyResponse = apiInstance.verify(verify);
+                if (null != verifyResponse) {
+                    if (null != verifyResponse.getData()) {
+                        System.out.println("验证码验证成功，订单号:" + verifyResponse.getData().getOrderId());
+                    } else
+                        System.out.println(result.getMsg());
+                } else {
+                    System.out.println("请求错误");
                 }
             } else {
                 System.out.println(result.getMsg());
@@ -67,4 +65,15 @@ public class Demo {
             System.out.println("请求错误");
         }
     }
+
+    /**
+     * 回调函数示例
+     * 使用CallbackData来接收后台回调信息
+     * 后台接收到http status code为200，认为回调成功，一般情况，业务系统正常返回有效字符串
+    @RequestMapping(value = "demoback", method = RequestMethod.POST)
+    public String demoback(@RequestBody CallbackData data, HttpServletRequest servlet) {
+        System.out.println( new Gson().toJson(data));
+        return "success";
+    }
+    */
 }

@@ -2,12 +2,13 @@
 
 # CodeVerify
 
+
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**code** | **String** |  | 
-**orderId** | **String** |  | 
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**code** | **String** |  |  |
+|**orderId** | **String** |  |  |
 
 
 

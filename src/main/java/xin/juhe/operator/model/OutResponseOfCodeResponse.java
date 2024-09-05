@@ -14,21 +14,42 @@
 package xin.juhe.operator.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.Arrays;
 import xin.juhe.operator.model.CodeResponse;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import xin.juhe.operator.JSON;
 
 /**
  * OutResponseOfCodeResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-04T19:48:05.711681+08:00[Asia/Shanghai]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-05T11:11:18.748484+08:00[Asia/Shanghai]", comments = "Generator version: 7.8.0")
 public class OutResponseOfCodeResponse {
   public static final String SERIALIZED_NAME_CODE = "code";
   @SerializedName(SERIALIZED_NAME_CODE)
@@ -42,23 +63,22 @@ public class OutResponseOfCodeResponse {
   @SerializedName(SERIALIZED_NAME_MSG)
   private String msg;
 
+  public OutResponseOfCodeResponse() {
+  }
 
   public OutResponseOfCodeResponse code(Integer code) {
-    
     this.code = code;
     return this;
   }
 
-   /**
+  /**
    * 响应代码
    * @return code
-  **/
-  @ApiModelProperty(required = true, value = "响应代码")
-
+   */
+  @javax.annotation.Nonnull
   public Integer getCode() {
     return code;
   }
-
 
   public void setCode(Integer code) {
     this.code = code;
@@ -66,22 +86,18 @@ public class OutResponseOfCodeResponse {
 
 
   public OutResponseOfCodeResponse data(CodeResponse data) {
-    
     this.data = data;
     return this;
   }
 
-   /**
+  /**
    * Get data
    * @return data
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
   public CodeResponse getData() {
     return data;
   }
-
 
   public void setData(CodeResponse data) {
     this.data = data;
@@ -89,26 +105,23 @@ public class OutResponseOfCodeResponse {
 
 
   public OutResponseOfCodeResponse msg(String msg) {
-    
     this.msg = msg;
     return this;
   }
 
-   /**
+  /**
    * 错误信息:成功时为空或为success
    * @return msg
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "错误信息:成功时为空或为success")
-
   public String getMsg() {
     return msg;
   }
 
-
   public void setMsg(String msg) {
     this.msg = msg;
   }
+
 
 
   @Override
@@ -129,7 +142,6 @@ public class OutResponseOfCodeResponse {
   public int hashCode() {
     return Objects.hash(code, data, msg);
   }
-
 
   @Override
   public String toString() {
@@ -153,5 +165,106 @@ public class OutResponseOfCodeResponse {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("code");
+    openapiFields.add("data");
+    openapiFields.add("msg");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("code");
+  }
+
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to OutResponseOfCodeResponse
+   */
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!OutResponseOfCodeResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in OutResponseOfCodeResponse is not found in the empty JSON string", OutResponseOfCodeResponse.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Map.Entry<String, JsonElement> entry : entries) {
+        if (!OutResponseOfCodeResponse.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `OutResponseOfCodeResponse` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        }
+      }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : OutResponseOfCodeResponse.openapiRequiredFields) {
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+        }
+      }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+      // validate the optional field `data`
+      if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
+        CodeResponse.validateJsonElement(jsonObj.get("data"));
+      }
+      if ((jsonObj.get("msg") != null && !jsonObj.get("msg").isJsonNull()) && !jsonObj.get("msg").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `msg` to be a primitive type in the JSON string but got `%s`", jsonObj.get("msg").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!OutResponseOfCodeResponse.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'OutResponseOfCodeResponse' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<OutResponseOfCodeResponse> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(OutResponseOfCodeResponse.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<OutResponseOfCodeResponse>() {
+           @Override
+           public void write(JsonWriter out, OutResponseOfCodeResponse value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public OutResponseOfCodeResponse read(JsonReader in) throws IOException {
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+  /**
+   * Create an instance of OutResponseOfCodeResponse given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of OutResponseOfCodeResponse
+   * @throws IOException if the JSON string is invalid with respect to OutResponseOfCodeResponse
+   */
+  public static OutResponseOfCodeResponse fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, OutResponseOfCodeResponse.class);
+  }
+
+  /**
+   * Convert an instance of OutResponseOfCodeResponse to an JSON string
+   *
+   * @return JSON string
+   */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 
