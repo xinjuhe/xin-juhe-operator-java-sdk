@@ -124,9 +124,9 @@ Class | Method | HTTP request | Description
 *OauthApi* | [**getToken**](docs/OauthApi.md#getToken) | **POST** /oauth2/token | 获取Token
 *OauthApi* | [**getUserInfo**](docs/OauthApi.md#getUserInfo) | **GET** /oauth2/userInfo | 获取用户信息
 *OauthApi* | [**getUserInfo1**](docs/OauthApi.md#getUserInfo1) | **POST** /oauth2/userInfo | 获取用户信息
-*OperatorApi* | [**demoback**](docs/OperatorApi.md#demoback) | **POST** /sw/api/v1/code/demoback | 回到函数示例
-*OperatorApi* | [**request**](docs/OperatorApi.md#request) | **POST** /sw/api/v1/code/request | 请求下发验证码接口
-*OperatorApi* | [**verify**](docs/OperatorApi.md#verify) | **POST** /sw/api/v1/code/verify | 请求校验验证码接口
+*OperatorApi* | [**demoback**](docs/OperatorApi.md#demoback) | **POST** /op/api/v1/code/demoback | 回到函数示例
+*OperatorApi* | [**request**](docs/OperatorApi.md#request) | **POST** /op/api/v1/code/request | 请求下发验证码接口
+*OperatorApi* | [**verify**](docs/OperatorApi.md#verify) | **POST** /op/api/v1/code/verify | 请求校验验证码接口
 
 
 ## Documentation for Models

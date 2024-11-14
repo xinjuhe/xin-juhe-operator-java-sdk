@@ -120,7 +120,7 @@ paths:
       - oauth
       x-accepts:
       - application/json;charset=UTF-8
-  /sw/api/v1/code/demoback:
+  /op/api/v1/code/demoback:
     post:
       description: 用户调用测试，业务系统无需调用
       operationId: demoback
@@ -160,7 +160,7 @@ paths:
       x-content-type: application/json
       x-accepts:
       - '*/*'
-  /sw/api/v1/code/request:
+  /op/api/v1/code/request:
     post:
       description: 请求下发验证码接口
       operationId: request
@@ -200,7 +200,7 @@ paths:
       x-content-type: application/json
       x-accepts:
       - '*/*'
-  /sw/api/v1/code/verify:
+  /op/api/v1/code/verify:
     post:
       description: 请求校验验证码接口
       operationId: verify

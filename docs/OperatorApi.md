@@ -4,9 +4,9 @@ All URIs are relative to *https://api.juhe.xin*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**demoback**](OperatorApi.md#demoback) | **POST** /sw/api/v1/code/demoback | 回到函数示例 |
-| [**request**](OperatorApi.md#request) | **POST** /sw/api/v1/code/request | 请求下发验证码接口 |
-| [**verify**](OperatorApi.md#verify) | **POST** /sw/api/v1/code/verify | 请求校验验证码接口 |
+| [**demoback**](OperatorApi.md#demoback) | **POST** /op/api/v1/code/demoback | 回到函数示例 |
+| [**request**](OperatorApi.md#request) | **POST** /op/api/v1/code/request | 请求下发验证码接口 |
+| [**verify**](OperatorApi.md#verify) | **POST** /op/api/v1/code/verify | 请求校验验证码接口 |
 
 
 <a id="demoback"></a>

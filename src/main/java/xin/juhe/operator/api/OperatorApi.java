@@ -108,7 +108,7 @@ public class OperatorApi {
         Object localVarPostBody = data;
 
         // create path and map variables
-        String localVarPath = "/sw/api/v1/code/demoback";
+        String localVarPath = "/op/api/v1/code/demoback";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -247,7 +247,7 @@ public class OperatorApi {
         Object localVarPostBody = request;
 
         // create path and map variables
-        String localVarPath = "/sw/api/v1/code/request";
+        String localVarPath = "/op/api/v1/code/request";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -386,7 +386,7 @@ public class OperatorApi {
         Object localVarPostBody = verify;
 
         // create path and map variables
-        String localVarPath = "/sw/api/v1/code/verify";
+        String localVarPath = "/op/api/v1/code/verify";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
