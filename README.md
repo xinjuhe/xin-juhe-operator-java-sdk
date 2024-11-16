@@ -2,8 +2,7 @@
 
 运营商业务API接口
 - API version: 1.0.0
-  - Build date: 2024-09-05T11:11:18.748484+08:00[Asia/Shanghai]
-  - Generator version: 7.8.0
+  - Build date: 2024-11-16T09:59:00.189103+08:00[Asia/Shanghai]
 
 运营商业务API接口平台应用程序接口文档
 
@@ -15,8 +14,8 @@
 ## Requirements
 
 Building the API client library requires:
-1. Java 1.8+
-2. Maven (3.8.3+)/Gradle (7.2+)
+1. Java 1.7+
+2. Maven/Gradle
 
 ## Installation
 
@@ -52,14 +51,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-  repositories {
-    mavenCentral()     // Needed if the 'xinjuhe-operator-java-sdk' jar has been published to maven central.
-    mavenLocal()       // Needed if the 'xinjuhe-operator-java-sdk' jar has been published to the local maven repo.
-  }
-
-  dependencies {
-     implementation "xin.juhe.operator:xinjuhe-operator-java-sdk:1.0.0"
-  }
+compile "xin.juhe.operator:xinjuhe-operator-java-sdk:1.0.0"
 ```
 
 ### Others
@@ -141,12 +133,9 @@ Class | Method | HTTP request | Description
  - [OutResponseOfCodeResponse](docs/OutResponseOfCodeResponse.md)
 
 
-<a id="documentation-for-authorization"></a>
 ## Documentation for Authorization
 
-
 Authentication schemes defined for the API:
-<a id="Authorization"></a>
 ### Authorization
 
 - **Type**: OAuth

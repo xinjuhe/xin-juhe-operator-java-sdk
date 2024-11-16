@@ -2,14 +2,14 @@
 
 All URIs are relative to *https://api.juhe.xin*
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**getToken**](OauthApi.md#getToken) | **POST** /oauth2/token | 获取Token |
-| [**getUserInfo**](OauthApi.md#getUserInfo) | **GET** /oauth2/userInfo | 获取用户信息 |
-| [**getUserInfo1**](OauthApi.md#getUserInfo1) | **POST** /oauth2/userInfo | 获取用户信息 |
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**getToken**](OauthApi.md#getToken) | **POST** /oauth2/token | 获取Token
+[**getUserInfo**](OauthApi.md#getUserInfo) | **GET** /oauth2/userInfo | 获取用户信息
+[**getUserInfo1**](OauthApi.md#getUserInfo1) | **POST** /oauth2/userInfo | 获取用户信息
 
 
-<a id="getToken"></a>
+<a name="getToken"></a>
 # **getToken**
 > String getToken(clientId, clientSecret)
 
@@ -50,10 +50,10 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **clientId** | **String**| client_id | |
-| **clientSecret** | **String**| client_secret | |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **clientId** | **String**| client_id |
+ **clientSecret** | **String**| client_secret |
 
 ### Return type
 
@@ -71,13 +71,13 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **201** | Created |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
+**200** | OK |  -  |
+**201** | Created |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
 
-<a id="getUserInfo"></a>
+<a name="getUserInfo"></a>
 # **getUserInfo**
 > HttpEntity getUserInfo()
 
@@ -138,12 +138,12 @@ This endpoint does not need any parameter.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
+**200** | OK |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
 
-<a id="getUserInfo1"></a>
+<a name="getUserInfo1"></a>
 # **getUserInfo1**
 > HttpEntity getUserInfo1()
 
@@ -204,9 +204,9 @@ This endpoint does not need any parameter.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **201** | Created |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
+**200** | OK |  -  |
+**201** | Created |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
 

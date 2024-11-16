@@ -15,8 +15,8 @@ package xin.juhe.operator.api;
 
 import xin.juhe.operator.ApiException;
 import xin.juhe.operator.model.HttpEntity;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.Ignore;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,50 +26,57 @@ import java.util.Map;
 /**
  * API tests for OauthApi
  */
-@Disabled
+@Ignore
 public class OauthApiTest {
 
     private final OauthApi api = new OauthApi();
 
+    
     /**
      * 获取Token
      *
      * 获取Token
      *
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void getTokenTest() throws ApiException {
         String clientId = null;
         String clientSecret = null;
         String response = api.getToken(clientId, clientSecret);
+
         // TODO: test validations
     }
-
+    
     /**
      * 获取用户信息
      *
      * 获取用户信息
      *
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void getUserInfoTest() throws ApiException {
         HttpEntity response = api.getUserInfo();
+
         // TODO: test validations
     }
-
+    
     /**
      * 获取用户信息
      *
      * 获取用户信息
      *
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void getUserInfo1Test() throws ApiException {
         HttpEntity response = api.getUserInfo1();
+
         // TODO: test validations
     }
-
+    
 }

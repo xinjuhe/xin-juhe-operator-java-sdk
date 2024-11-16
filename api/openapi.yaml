@@ -60,8 +60,7 @@ paths:
       summary: 获取Token
       tags:
       - oauth
-      x-accepts:
-      - '*/*'
+      x-accepts: '*/*'
   /oauth2/userInfo:
     get:
       description: 获取用户信息
@@ -88,8 +87,7 @@ paths:
       summary: 获取用户信息
       tags:
       - oauth
-      x-accepts:
-      - application/json;charset=UTF-8
+      x-accepts: application/json;charset=UTF-8
     post:
       description: 获取用户信息
       operationId: getUserInfo_1
@@ -118,8 +116,7 @@ paths:
       summary: 获取用户信息
       tags:
       - oauth
-      x-accepts:
-      - application/json;charset=UTF-8
+      x-accepts: application/json;charset=UTF-8
   /op/api/v1/code/demoback:
     post:
       description: 用户调用测试，业务系统无需调用
@@ -157,9 +154,8 @@ paths:
       tags:
       - operator
       x-codegen-request-body-name: data
-      x-content-type: application/json
-      x-accepts:
-      - '*/*'
+      x-contentType: application/json
+      x-accepts: '*/*'
   /op/api/v1/code/request:
     post:
       description: 请求下发验证码接口
@@ -197,9 +193,8 @@ paths:
       tags:
       - operator
       x-codegen-request-body-name: request
-      x-content-type: application/json
-      x-accepts:
-      - '*/*'
+      x-contentType: application/json
+      x-accepts: '*/*'
   /op/api/v1/code/verify:
     post:
       description: 请求校验验证码接口
@@ -237,9 +232,8 @@ paths:
       tags:
       - operator
       x-codegen-request-body-name: verify
-      x-content-type: application/json
-      x-accepts:
-      - '*/*'
+      x-contentType: application/json
+      x-accepts: '*/*'
   /user/api/v1/balance:
     post:
       description: 获取用户余额
@@ -269,8 +263,7 @@ paths:
       summary: 获取用户余额
       tags:
       - balance
-      x-accepts:
-      - '*/*'
+      x-accepts: '*/*'
 components:
   schemas:
     Balance:
@@ -295,6 +288,7 @@ components:
       type: object
     CallbackData:
       example:
+        orderId: orderId
         param: param
         channel: channel
         mobile: mobile
@@ -308,6 +302,8 @@ components:
           type: string
         mobile:
           type: string
+        orderId:
+          type: string
         param:
           type: string
         status:
@@ -318,6 +314,7 @@ components:
       required:
       - channel
       - mobile
+      - orderId
       - param
       - status
       title: CallbackData
@@ -390,7 +387,7 @@ components:
       type: object
     HttpEntity:
       example:
-        body: "{}"
+        body: '{}'
       properties:
         body:
           properties: {}

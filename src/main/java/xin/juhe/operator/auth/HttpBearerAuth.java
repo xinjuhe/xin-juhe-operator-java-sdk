@@ -13,19 +13,15 @@
 
 package xin.juhe.operator.auth;
 
-import xin.juhe.operator.ApiException;
 import xin.juhe.operator.Pair;
 
-import java.net.URI;
-import java.util.List;
 import java.util.Map;
-import java.util.Optional;
-import java.util.function.Supplier;
+import java.util.List;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-05T11:11:18.748484+08:00[Asia/Shanghai]", comments = "Generator version: 7.8.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-16T09:59:00.189103+08:00[Asia/Shanghai]")
 public class HttpBearerAuth implements Authentication {
   private final String scheme;
-  private Supplier<String> tokenSupplier;
+  private String bearerToken;
 
   public HttpBearerAuth(String scheme) {
     this.scheme = scheme;
@@ -37,7 +33,7 @@ public class HttpBearerAuth implements Authentication {
    * @return The bearer token
    */
   public String getBearerToken() {
-    return tokenSupplier.get();
+    return bearerToken;
   }
 
   /**
@@ -46,23 +42,12 @@ public class HttpBearerAuth implements Authentication {
    * @param bearerToken The bearer token to send in the Authorization header
    */
   public void setBearerToken(String bearerToken) {
-    this.tokenSupplier = () -> bearerToken;
-  }
-
-  /**
-   * Sets the supplier of tokens, which together with the scheme, will be sent as the value of the Authorization header.
-   *
-   * @param tokenSupplier The supplier of bearer tokens to send in the Authorization header
-   */
-  public void setBearerToken(Supplier<String> tokenSupplier) {
-    this.tokenSupplier = tokenSupplier;
+    this.bearerToken = bearerToken;
   }
 
   @Override
-  public void applyToParams(List<Pair> queryParams, Map<String, String> headerParams, Map<String, String> cookieParams,
-                            String payload, String method, URI uri) throws ApiException {
-    String bearerToken = Optional.ofNullable(tokenSupplier).map(Supplier::get).orElse(null);
-    if (bearerToken == null) {
+  public void applyToParams(List<Pair> queryParams, Map<String, String> headerParams, Map<String, String> cookieParams) {
+    if(bearerToken == null) {
       return;
     }
 

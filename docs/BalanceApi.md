@@ -2,12 +2,12 @@
 
 All URIs are relative to *https://api.juhe.xin*
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**getBalance**](BalanceApi.md#getBalance) | **POST** /user/api/v1/balance | 获取用户余额 |
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**getBalance**](BalanceApi.md#getBalance) | **POST** /user/api/v1/balance | 获取用户余额
 
 
-<a id="getBalance"></a>
+<a name="getBalance"></a>
 # **getBalance**
 > OutResponseOfBalance getBalance()
 
@@ -68,9 +68,9 @@ This endpoint does not need any parameter.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **201** | Created |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
+**200** | OK |  -  |
+**201** | Created |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
 

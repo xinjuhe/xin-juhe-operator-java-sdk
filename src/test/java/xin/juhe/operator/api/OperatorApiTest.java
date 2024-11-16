@@ -18,8 +18,8 @@ import xin.juhe.operator.model.CallbackData;
 import xin.juhe.operator.model.CodeRequest;
 import xin.juhe.operator.model.CodeVerify;
 import xin.juhe.operator.model.OutResponseOfCodeResponse;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.Ignore;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,51 +29,58 @@ import java.util.Map;
 /**
  * API tests for OperatorApi
  */
-@Disabled
+@Ignore
 public class OperatorApiTest {
 
     private final OperatorApi api = new OperatorApi();
 
+    
     /**
      * 回到函数示例
      *
      * 用户调用测试，业务系统无需调用
      *
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void demobackTest() throws ApiException {
         CallbackData data = null;
         String response = api.demoback(data);
+
         // TODO: test validations
     }
-
+    
     /**
      * 请求下发验证码接口
      *
      * 请求下发验证码接口
      *
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void requestTest() throws ApiException {
         CodeRequest request = null;
         OutResponseOfCodeResponse response = api.request(request);
+
         // TODO: test validations
     }
-
+    
     /**
      * 请求校验验证码接口
      *
      * 请求校验验证码接口
      *
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void verifyTest() throws ApiException {
         CodeVerify verify = null;
         OutResponseOfCodeResponse response = api.verify(verify);
+
         // TODO: test validations
     }
-
+    
 }

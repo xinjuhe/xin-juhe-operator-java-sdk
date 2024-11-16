@@ -15,8 +15,8 @@ package xin.juhe.operator.api;
 
 import xin.juhe.operator.ApiException;
 import xin.juhe.operator.model.OutResponseOfBalance;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.Ignore;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,22 +26,25 @@ import java.util.Map;
 /**
  * API tests for BalanceApi
  */
-@Disabled
+@Ignore
 public class BalanceApiTest {
 
     private final BalanceApi api = new BalanceApi();
 
+    
     /**
      * 获取用户余额
      *
      * 获取用户余额
      *
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void getBalanceTest() throws ApiException {
         OutResponseOfBalance response = api.getBalance();
+
         // TODO: test validations
     }
-
+    
 }

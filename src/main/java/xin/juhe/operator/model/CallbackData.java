@@ -14,41 +14,20 @@
 package xin.juhe.operator.model;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.util.Arrays;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import xin.juhe.operator.JSON;
 
 /**
  * CallbackData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-05T11:11:18.748484+08:00[Asia/Shanghai]", comments = "Generator version: 7.8.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-16T09:59:00.189103+08:00[Asia/Shanghai]")
 public class CallbackData {
   public static final String SERIALIZED_NAME_CHANNEL = "channel";
   @SerializedName(SERIALIZED_NAME_CHANNEL)
@@ -61,6 +40,10 @@ public class CallbackData {
   public static final String SERIALIZED_NAME_MOBILE = "mobile";
   @SerializedName(SERIALIZED_NAME_MOBILE)
   private String mobile;
+
+  public static final String SERIALIZED_NAME_ORDER_ID = "orderId";
+  @SerializedName(SERIALIZED_NAME_ORDER_ID)
+  private String orderId;
 
   public static final String SERIALIZED_NAME_PARAM = "param";
   @SerializedName(SERIALIZED_NAME_PARAM)
@@ -111,33 +94,29 @@ public class CallbackData {
         return StatusEnum.fromValue(value);
       }
     }
-
-    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      String value = jsonElement.getAsString();
-      StatusEnum.fromValue(value);
-    }
   }
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
   private StatusEnum status;
 
-  public CallbackData() {
-  }
 
   public CallbackData channel(String channel) {
+    
     this.channel = channel;
     return this;
   }
 
-  /**
+   /**
    * Get channel
    * @return channel
-   */
-  @javax.annotation.Nonnull
+  **/
+  @ApiModelProperty(required = true, value = "")
+
   public String getChannel() {
     return channel;
   }
+
 
   public void setChannel(String channel) {
     this.channel = channel;
@@ -145,18 +124,22 @@ public class CallbackData {
 
 
   public CallbackData error(String error) {
+    
     this.error = error;
     return this;
   }
 
-  /**
+   /**
    * 当回调状态显示失败时显示
    * @return error
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "当回调状态显示失败时显示")
+
   public String getError() {
     return error;
   }
+
 
   public void setError(String error) {
     this.error = error;
@@ -164,37 +147,65 @@ public class CallbackData {
 
 
   public CallbackData mobile(String mobile) {
+    
     this.mobile = mobile;
     return this;
   }
 
-  /**
+   /**
    * Get mobile
    * @return mobile
-   */
-  @javax.annotation.Nonnull
+  **/
+  @ApiModelProperty(required = true, value = "")
+
   public String getMobile() {
     return mobile;
   }
+
 
   public void setMobile(String mobile) {
     this.mobile = mobile;
   }
 
 
+  public CallbackData orderId(String orderId) {
+    
+    this.orderId = orderId;
+    return this;
+  }
+
+   /**
+   * Get orderId
+   * @return orderId
+  **/
+  @ApiModelProperty(required = true, value = "")
+
+  public String getOrderId() {
+    return orderId;
+  }
+
+
+  public void setOrderId(String orderId) {
+    this.orderId = orderId;
+  }
+
+
   public CallbackData param(String param) {
+    
     this.param = param;
     return this;
   }
 
-  /**
+   /**
    * Get param
    * @return param
-   */
-  @javax.annotation.Nonnull
+  **/
+  @ApiModelProperty(required = true, value = "")
+
   public String getParam() {
     return param;
   }
+
 
   public void setParam(String param) {
     this.param = param;
@@ -202,23 +213,25 @@ public class CallbackData {
 
 
   public CallbackData status(StatusEnum status) {
+    
     this.status = status;
     return this;
   }
 
-  /**
+   /**
    * Get status
    * @return status
-   */
-  @javax.annotation.Nonnull
+  **/
+  @ApiModelProperty(required = true, value = "")
+
   public StatusEnum getStatus() {
     return status;
   }
 
+
   public void setStatus(StatusEnum status) {
     this.status = status;
   }
-
 
 
   @Override
@@ -233,14 +246,16 @@ public class CallbackData {
     return Objects.equals(this.channel, callbackData.channel) &&
         Objects.equals(this.error, callbackData.error) &&
         Objects.equals(this.mobile, callbackData.mobile) &&
+        Objects.equals(this.orderId, callbackData.orderId) &&
         Objects.equals(this.param, callbackData.param) &&
         Objects.equals(this.status, callbackData.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(channel, error, mobile, param, status);
+    return Objects.hash(channel, error, mobile, orderId, param, status);
   }
+
 
   @Override
   public String toString() {
@@ -249,6 +264,7 @@ public class CallbackData {
     sb.append("    channel: ").append(toIndentedString(channel)).append("\n");
     sb.append("    error: ").append(toIndentedString(error)).append("\n");
     sb.append("    mobile: ").append(toIndentedString(mobile)).append("\n");
+    sb.append("    orderId: ").append(toIndentedString(orderId)).append("\n");
     sb.append("    param: ").append(toIndentedString(param)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
@@ -266,121 +282,5 @@ public class CallbackData {
     return o.toString().replace("\n", "\n    ");
   }
 
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("channel");
-    openapiFields.add("error");
-    openapiFields.add("mobile");
-    openapiFields.add("param");
-    openapiFields.add("status");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("channel");
-    openapiRequiredFields.add("mobile");
-    openapiRequiredFields.add("param");
-    openapiRequiredFields.add("status");
-  }
-
-  /**
-   * Validates the JSON Element and throws an exception if issues found
-   *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to CallbackData
-   */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!CallbackData.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CallbackData is not found in the empty JSON string", CallbackData.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!CallbackData.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CallbackData` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : CallbackData.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("channel").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `channel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("channel").toString()));
-      }
-      if ((jsonObj.get("error") != null && !jsonObj.get("error").isJsonNull()) && !jsonObj.get("error").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `error` to be a primitive type in the JSON string but got `%s`", jsonObj.get("error").toString()));
-      }
-      if (!jsonObj.get("mobile").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `mobile` to be a primitive type in the JSON string but got `%s`", jsonObj.get("mobile").toString()));
-      }
-      if (!jsonObj.get("param").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `param` to be a primitive type in the JSON string but got `%s`", jsonObj.get("param").toString()));
-      }
-      if (!jsonObj.get("status").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
-      }
-      // validate the required field `status`
-      StatusEnum.validateJsonElement(jsonObj.get("status"));
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!CallbackData.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'CallbackData' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<CallbackData> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(CallbackData.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<CallbackData>() {
-           @Override
-           public void write(JsonWriter out, CallbackData value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public CallbackData read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
-           }
-
-       }.nullSafe();
-    }
-  }
-
-  /**
-   * Create an instance of CallbackData given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of CallbackData
-   * @throws IOException if the JSON string is invalid with respect to CallbackData
-   */
-  public static CallbackData fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, CallbackData.class);
-  }
-
-  /**
-   * Convert an instance of CallbackData to an JSON string
-   *
-   * @return JSON string
-   */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
 }
 

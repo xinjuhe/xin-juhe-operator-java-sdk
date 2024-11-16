@@ -14,41 +14,20 @@
 package xin.juhe.operator.model;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.util.Arrays;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import xin.juhe.operator.JSON;
 
 /**
  * CodeRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-05T11:11:18.748484+08:00[Asia/Shanghai]", comments = "Generator version: 7.8.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-16T09:59:00.189103+08:00[Asia/Shanghai]")
 public class CodeRequest {
   public static final String SERIALIZED_NAME_APP_NAME = "appName";
   @SerializedName(SERIALIZED_NAME_APP_NAME)
@@ -82,22 +61,24 @@ public class CodeRequest {
   @SerializedName(SERIALIZED_NAME_UA)
   private String ua;
 
-  public CodeRequest() {
-  }
 
   public CodeRequest appName(String appName) {
+    
     this.appName = appName;
     return this;
   }
 
-  /**
+   /**
    * Get appName
    * @return appName
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
   public String getAppName() {
     return appName;
   }
+
 
   public void setAppName(String appName) {
     this.appName = appName;
@@ -105,18 +86,22 @@ public class CodeRequest {
 
 
   public CodeRequest appPackage(String appPackage) {
+    
     this.appPackage = appPackage;
     return this;
   }
 
-  /**
+   /**
    * Get appPackage
    * @return appPackage
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
   public String getAppPackage() {
     return appPackage;
   }
+
 
   public void setAppPackage(String appPackage) {
     this.appPackage = appPackage;
@@ -124,18 +109,21 @@ public class CodeRequest {
 
 
   public CodeRequest channel(String channel) {
+    
     this.channel = channel;
     return this;
   }
 
-  /**
+   /**
    * Get channel
    * @return channel
-   */
-  @javax.annotation.Nonnull
+  **/
+  @ApiModelProperty(required = true, value = "")
+
   public String getChannel() {
     return channel;
   }
+
 
   public void setChannel(String channel) {
     this.channel = channel;
@@ -143,18 +131,22 @@ public class CodeRequest {
 
 
   public CodeRequest ip(String ip) {
+    
     this.ip = ip;
     return this;
   }
 
-  /**
+   /**
    * Get ip
    * @return ip
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
   public String getIp() {
     return ip;
   }
+
 
   public void setIp(String ip) {
     this.ip = ip;
@@ -162,18 +154,21 @@ public class CodeRequest {
 
 
   public CodeRequest mobile(String mobile) {
+    
     this.mobile = mobile;
     return this;
   }
 
-  /**
+   /**
    * Get mobile
    * @return mobile
-   */
-  @javax.annotation.Nonnull
+  **/
+  @ApiModelProperty(required = true, value = "")
+
   public String getMobile() {
     return mobile;
   }
+
 
   public void setMobile(String mobile) {
     this.mobile = mobile;
@@ -181,18 +176,22 @@ public class CodeRequest {
 
 
   public CodeRequest param(String param) {
+    
     this.param = param;
     return this;
   }
 
-  /**
+   /**
    * Get param
    * @return param
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
   public String getParam() {
     return param;
   }
+
 
   public void setParam(String param) {
     this.param = param;
@@ -200,18 +199,21 @@ public class CodeRequest {
 
 
   public CodeRequest product(String product) {
+    
     this.product = product;
     return this;
   }
 
-  /**
+   /**
    * Get product
    * @return product
-   */
-  @javax.annotation.Nonnull
+  **/
+  @ApiModelProperty(required = true, value = "")
+
   public String getProduct() {
     return product;
   }
+
 
   public void setProduct(String product) {
     this.product = product;
@@ -219,23 +221,26 @@ public class CodeRequest {
 
 
   public CodeRequest ua(String ua) {
+    
     this.ua = ua;
     return this;
   }
 
-  /**
+   /**
    * Get ua
    * @return ua
-   */
+  **/
   @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
   public String getUa() {
     return ua;
   }
 
+
   public void setUa(String ua) {
     this.ua = ua;
   }
-
 
 
   @Override
@@ -261,6 +266,7 @@ public class CodeRequest {
   public int hashCode() {
     return Objects.hash(appName, appPackage, channel, ip, mobile, param, product, ua);
   }
+
 
   @Override
   public String toString() {
@@ -289,130 +295,5 @@ public class CodeRequest {
     return o.toString().replace("\n", "\n    ");
   }
 
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("appName");
-    openapiFields.add("appPackage");
-    openapiFields.add("channel");
-    openapiFields.add("ip");
-    openapiFields.add("mobile");
-    openapiFields.add("param");
-    openapiFields.add("product");
-    openapiFields.add("ua");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("channel");
-    openapiRequiredFields.add("mobile");
-    openapiRequiredFields.add("product");
-  }
-
-  /**
-   * Validates the JSON Element and throws an exception if issues found
-   *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to CodeRequest
-   */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!CodeRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CodeRequest is not found in the empty JSON string", CodeRequest.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!CodeRequest.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CodeRequest` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : CodeRequest.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("appName") != null && !jsonObj.get("appName").isJsonNull()) && !jsonObj.get("appName").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `appName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("appName").toString()));
-      }
-      if ((jsonObj.get("appPackage") != null && !jsonObj.get("appPackage").isJsonNull()) && !jsonObj.get("appPackage").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `appPackage` to be a primitive type in the JSON string but got `%s`", jsonObj.get("appPackage").toString()));
-      }
-      if (!jsonObj.get("channel").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `channel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("channel").toString()));
-      }
-      if ((jsonObj.get("ip") != null && !jsonObj.get("ip").isJsonNull()) && !jsonObj.get("ip").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `ip` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ip").toString()));
-      }
-      if (!jsonObj.get("mobile").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `mobile` to be a primitive type in the JSON string but got `%s`", jsonObj.get("mobile").toString()));
-      }
-      if ((jsonObj.get("param") != null && !jsonObj.get("param").isJsonNull()) && !jsonObj.get("param").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `param` to be a primitive type in the JSON string but got `%s`", jsonObj.get("param").toString()));
-      }
-      if (!jsonObj.get("product").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `product` to be a primitive type in the JSON string but got `%s`", jsonObj.get("product").toString()));
-      }
-      if ((jsonObj.get("ua") != null && !jsonObj.get("ua").isJsonNull()) && !jsonObj.get("ua").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `ua` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ua").toString()));
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!CodeRequest.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'CodeRequest' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<CodeRequest> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(CodeRequest.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<CodeRequest>() {
-           @Override
-           public void write(JsonWriter out, CodeRequest value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public CodeRequest read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
-           }
-
-       }.nullSafe();
-    }
-  }
-
-  /**
-   * Create an instance of CodeRequest given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of CodeRequest
-   * @throws IOException if the JSON string is invalid with respect to CodeRequest
-   */
-  public static CodeRequest fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, CodeRequest.class);
-  }
-
-  /**
-   * Convert an instance of CodeRequest to an JSON string
-   *
-   * @return JSON string
-   */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
 }
 

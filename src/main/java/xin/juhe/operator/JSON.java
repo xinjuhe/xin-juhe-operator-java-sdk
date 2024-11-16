@@ -23,7 +23,11 @@ import com.google.gson.stream.JsonWriter;
 import com.google.gson.JsonElement;
 import io.gsonfire.GsonFireBuilder;
 import io.gsonfire.TypeSelector;
+import org.threeten.bp.LocalDate;
+import org.threeten.bp.OffsetDateTime;
+import org.threeten.bp.format.DateTimeFormatter;
 
+import xin.juhe.operator.model.*;
 import okio.ByteString;
 
 import java.io.IOException;
@@ -32,30 +36,20 @@ import java.lang.reflect.Type;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.ParsePosition;
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Map;
 import java.util.HashMap;
 
-/*
- * A JSON utility class
- *
- * NOTE: in the future, this class may be converted to static, which may break
- *       backward-compatibility
- */
 public class JSON {
-    private static Gson gson;
-    private static boolean isLenientOnJson = false;
-    private static DateTypeAdapter dateTypeAdapter = new DateTypeAdapter();
-    private static SqlDateTypeAdapter sqlDateTypeAdapter = new SqlDateTypeAdapter();
-    private static OffsetDateTimeTypeAdapter offsetDateTimeTypeAdapter = new OffsetDateTimeTypeAdapter();
-    private static LocalDateTypeAdapter localDateTypeAdapter = new LocalDateTypeAdapter();
-    private static ByteArrayAdapter byteArrayAdapter = new ByteArrayAdapter();
+    private Gson gson;
+    private boolean isLenientOnJson = false;
+    private DateTypeAdapter dateTypeAdapter = new DateTypeAdapter();
+    private SqlDateTypeAdapter sqlDateTypeAdapter = new SqlDateTypeAdapter();
+    private OffsetDateTimeTypeAdapter offsetDateTimeTypeAdapter = new OffsetDateTimeTypeAdapter();
+    private LocalDateTypeAdapter localDateTypeAdapter = new LocalDateTypeAdapter();
+    private ByteArrayAdapter byteArrayAdapter = new ByteArrayAdapter();
 
-    @SuppressWarnings("unchecked")
     public static GsonBuilder createGson() {
         GsonFireBuilder fireBuilder = new GsonFireBuilder()
         ;
@@ -86,22 +80,14 @@ public class JSON {
         return clazz;
     }
 
-    static {
-        GsonBuilder gsonBuilder = createGson();
-        gsonBuilder.registerTypeAdapter(Date.class, dateTypeAdapter);
-        gsonBuilder.registerTypeAdapter(java.sql.Date.class, sqlDateTypeAdapter);
-        gsonBuilder.registerTypeAdapter(OffsetDateTime.class, offsetDateTimeTypeAdapter);
-        gsonBuilder.registerTypeAdapter(LocalDate.class, localDateTypeAdapter);
-        gsonBuilder.registerTypeAdapter(byte[].class, byteArrayAdapter);
-        gsonBuilder.registerTypeAdapterFactory(new xin.juhe.operator.model.Balance.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new xin.juhe.operator.model.CallbackData.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new xin.juhe.operator.model.CodeRequest.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new xin.juhe.operator.model.CodeResponse.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new xin.juhe.operator.model.CodeVerify.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new xin.juhe.operator.model.HttpEntity.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new xin.juhe.operator.model.OutResponseOfBalance.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new xin.juhe.operator.model.OutResponseOfCodeResponse.CustomTypeAdapterFactory());
-        gson = gsonBuilder.create();
+    public JSON() {
+        gson = createGson()
+            .registerTypeAdapter(Date.class, dateTypeAdapter)
+            .registerTypeAdapter(java.sql.Date.class, sqlDateTypeAdapter)
+            .registerTypeAdapter(OffsetDateTime.class, offsetDateTimeTypeAdapter)
+            .registerTypeAdapter(LocalDate.class, localDateTypeAdapter)
+            .registerTypeAdapter(byte[].class, byteArrayAdapter)
+            .create();
     }
 
     /**
@@ -109,7 +95,7 @@ public class JSON {
      *
      * @return Gson
      */
-    public static Gson getGson() {
+    public Gson getGson() {
         return gson;
     }
 
@@ -117,13 +103,16 @@ public class JSON {
      * Set Gson.
      *
      * @param gson Gson
+     * @return JSON
      */
-    public static void setGson(Gson gson) {
-        JSON.gson = gson;
+    public JSON setGson(Gson gson) {
+        this.gson = gson;
+        return this;
     }
 
-    public static void setLenientOnJson(boolean lenientOnJson) {
+    public JSON setLenientOnJson(boolean lenientOnJson) {
         isLenientOnJson = lenientOnJson;
+        return this;
     }
 
     /**
@@ -132,7 +121,7 @@ public class JSON {
      * @param obj Object
      * @return String representation of the JSON
      */
-    public static String serialize(Object obj) {
+    public String serialize(Object obj) {
         return gson.toJson(obj);
     }
 
@@ -145,7 +134,7 @@ public class JSON {
      * @return The deserialized Java object
      */
     @SuppressWarnings("unchecked")
-    public static <T> T deserialize(String body, Type returnType) {
+    public <T> T deserialize(String body, Type returnType) {
         try {
             if (isLenientOnJson) {
                 JsonReader jsonReader = new JsonReader(new StringReader(body));
@@ -169,7 +158,7 @@ public class JSON {
     /**
      * Gson TypeAdapter for Byte Array type
      */
-    public static class ByteArrayAdapter extends TypeAdapter<byte[]> {
+    public class ByteArrayAdapter extends TypeAdapter<byte[]> {
 
         @Override
         public void write(JsonWriter out, byte[] value) throws IOException {
@@ -241,7 +230,7 @@ public class JSON {
     /**
      * Gson TypeAdapter for JSR310 LocalDate type
      */
-    public static class LocalDateTypeAdapter extends TypeAdapter<LocalDate> {
+    public class LocalDateTypeAdapter extends TypeAdapter<LocalDate> {
 
         private DateTimeFormatter formatter;
 
@@ -279,12 +268,14 @@ public class JSON {
         }
     }
 
-    public static void setOffsetDateTimeFormat(DateTimeFormatter dateFormat) {
+    public JSON setOffsetDateTimeFormat(DateTimeFormatter dateFormat) {
         offsetDateTimeTypeAdapter.setFormat(dateFormat);
+        return this;
     }
 
-    public static void setLocalDateFormat(DateTimeFormatter dateFormat) {
+    public JSON setLocalDateFormat(DateTimeFormatter dateFormat) {
         localDateTypeAdapter.setFormat(dateFormat);
+        return this;
     }
 
     /**
@@ -398,11 +389,14 @@ public class JSON {
         }
     }
 
-    public static void setDateFormat(DateFormat dateFormat) {
+    public JSON setDateFormat(DateFormat dateFormat) {
         dateTypeAdapter.setFormat(dateFormat);
+        return this;
     }
 
-    public static void setSqlDateFormat(DateFormat dateFormat) {
+    public JSON setSqlDateFormat(DateFormat dateFormat) {
         sqlDateTypeAdapter.setFormat(dateFormat);
+        return this;
     }
+
 }

@@ -13,10 +13,8 @@
 
 package xin.juhe.operator;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-05T11:11:18.748484+08:00[Asia/Shanghai]", comments = "Generator version: 7.8.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-16T09:59:00.189103+08:00[Asia/Shanghai]")
 public class Configuration {
-    public static final String VERSION = "1.0.0";
-
     private static ApiClient defaultApiClient = new ApiClient();
 
     /**
